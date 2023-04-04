@@ -19,16 +19,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class BaseMovita implements Locator {
-    private  WebDriver driver;
-    private  WebDriverWait wait;
-
-    @BeforeTest
-    @Parameters("browser")
-    public void beforeTest(@Optional("CHROME") String browser) {
-        driver = Driver.getDriver(Browsers.valueOf(browser));
+    protected  WebDriver driver;
+    protected   WebDriverWait wait;{
+        driver = Driver.getDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
+
     }
+
+
+
 
     @AfterTest
     public void afterTest() {
