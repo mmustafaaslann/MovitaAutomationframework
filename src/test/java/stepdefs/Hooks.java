@@ -1,13 +1,19 @@
 package stepdefs;
 
+import Utilities.Driver;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import readers.property.PropertyReader;
 
 public class Hooks {
 
 
-    @Before(order = 1)
-    public void before(){
+ @After
+    public void after(){
+     Driver.quitDriver();
 
     }
+    boolean screenshot = PropertyReader.propertyReader().get("takescreenshot").equalsIgnoreCase("true");
+
 
 }
