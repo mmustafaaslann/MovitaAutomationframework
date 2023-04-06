@@ -22,9 +22,7 @@ public class Test1 extends BaseMovita {
     public void logo(){
         click(llogo);
         bekle(3000);
-        visible(lMobilVasıta);
-
-        //assertElement(lMobilVasıta,str);
+        visible(lMobilVasıtaTurkish);
 
         getScreenshot("MobilVasıta");
     }
@@ -49,7 +47,7 @@ public class Test1 extends BaseMovita {
     @Test(priority = 4,dependsOnMethods = "openMovita")
     public void homePage(){
         hoverOver(homePageMenu("Ana Sayfa"),"Ana Sayfa");
-        visible(lMobilVasıta);
+        visible(lMobilVasıtaTurkish);
 
     }
     @Test(priority = 5,dependsOnMethods = "openMovita")
@@ -58,6 +56,4 @@ public class Test1 extends BaseMovita {
         hoverAll(lSubMenuKurumsal);
 
     }
-
-
 }

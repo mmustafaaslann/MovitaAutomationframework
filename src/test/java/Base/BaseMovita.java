@@ -1,7 +1,6 @@
 package Base;
 
 import Locaators.Locator;
-import Utilities.Browsers;
 import Utilities.Driver;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -55,10 +54,35 @@ public class BaseMovita implements Locator {
 
     }
 
-    public void click(WebElement element) {
-        element.click();
 
-    }
+        public void click(WebElement element) {
+            wait.until(driver->{
+                try{
+
+                    element.click();
+                    return true ;
+                }catch (Exception e){
+                    try{
+                        new Actions(driver).moveToElement(element).click().perform();
+                        return  true ;
+
+                    }catch (Exception exception){
+                        try {
+                            ((JavascriptExecutor)driver).executeScript("arguments[0].click",element);
+                            return  true ;
+
+                        }catch (Exception exp){
+                            return  false ;
+
+                        }
+                    }
+                }
+            });
+
+        }
+
+
+
 
     public void visible(By locator) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
